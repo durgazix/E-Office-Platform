@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Back at it, Durgazix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Theme Preload Script -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("theme") || "dark";
+            document.body.setAttribute("data-bs-theme", savedTheme);
+        })();
+    </script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <!-- Sidebar Overlay (Mobile Only) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column py-3" id="sidebar">
+        <!-- Toggle -->
+        <button class="sidebar-btn mb-2 sidebar-item" id="sidebarToggle">
+            <i class="bi bi-layout-sidebar-inset sidebar-icon"></i>
+            <span class="sidebar-label">E-Office</span>
+        </button>
+
+        <button class="sidebar-btn mb-2 sidebar-item" onclick="window.location.href='index.html'">
+            <i class="bi bi-plus-lg sidebar-icon"></i>
+            <span class="sidebar-label">New Chat</span>
+        </button>
+
+        <button class="sidebar-btn mb-2 sidebar-item" onclick="window.location.href='historypage.html'">
+            <i class="bi bi-clock-history sidebar-icon"></i>
+            <span class="sidebar-label">History</span>
+        </button>
+
+        <button class="sidebar-btn mb-2 sidebar-item" onclick="window.location.href='app.html'">
+            <i class="bi bi-grid-3x3-gap sidebar-icon"></i>
+            <span class="sidebar-label">Apps</span>
+        </button>
+
+        <button class="sidebar-btn mb-2 sidebar-item">
+            <i class="bi bi-code-slash sidebar-icon"></i>
+            <span class="sidebar-label">Code</span>
+        </button>
+
+        <hr>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Your Chats</div>
+            <div class="sidebar-item">
+                <button class="sidebar-btn sidebar-chat">
+                    <span class="sidebar-label">Project Planning....</span>
+                </button>
+            </div>
+            <div class="sidebar-item">
+                <button class="sidebar-btn sidebar-chat">
+                    <span class="sidebar-label">Bug Fix Notes..</span>
+                </button>
+            </div>
+            <div class="sidebar-item">
+                <button class="sidebar-btn sidebar-chat">
+                    <span class="sidebar-label">API Discussion...</span>
+                </button>
+            </div>
+            <div class="sidebar-item">
+                <button class="sidebar-btn sidebar-chat">
+                    <span class="sidebar-label">Bug Fix Notes..</span>
+                </button>
+            </div>
+            <div class="sidebar-item">
+                <button class="sidebar-btn sidebar-chat">
+                    <span class="sidebar-label">API Discussion..</span>
+                </button>
+            </div>
+            <div class="sidebar-item">
+                <button class="sidebar-btn sidebar-chat">
+                    <span class="sidebar-label">Bug Fix Notes..</span>
+                </button>
+            </div>
+            <div class="sidebar-item">
+                <button class="sidebar-btn sidebar-chat">
+                    <span class="sidebar-label">API Discussion....</span>
+                </button>
+            </div>
+            <div class="sidebar-item">
+                <button class="sidebar-btn sidebar-chat">
+                    <span class="sidebar-label">Bug Fix Notes..</span>
+                </button>
+            </div>
+            <div class="sidebar-item">
+                <button class="sidebar-btn sidebar-chat">
+                    <span class="sidebar-label">API Discussion...</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="profile-section mt-auto">
+            <div class="sidebar-item profile-dropdown">
+                <!-- Profile Trigger Button -->
+                <button class="sidebar-btn profile-trigger" id="profileTrigger">
+                    <div class="sidebar-avatar">DP</div>
+                    <span class="sidebar-label">Profile</span>
+                </button>
+
+                <!-- Dropdown Menu -->
+                <div class="profile-dropdown-menu" id="profileDropdown">
+                    <!-- User Info -->
+                    <div class="dropdown-user-info">
+                        <div class="dropdown-avatar">DP</div>
+                        <div class="user-details">
+                            <div class="user-name">Deepak Patel</div>
+                            <div class="user-email">deepak@example.com</div>
+                        </div>
+                    </div>
+
+                    <!-- Menu Items -->
+                    <div class="dropdown-menu-items">
+                        <a href="#" class="dropdown-menu-item">
+                            <i class="bi bi-person-circle"></i>
+                            <span>Account</span>
+                        </a>
+                        <a href="#" class="dropdown-menu-item">
+                            <i class="bi bi-sliders"></i>
+                            <span>Preferences</span>
+                        </a>
+                        <a href="#" class="dropdown-menu-item">
+                            <i class="bi bi-palette"></i>
+                            <span>Personalization</span>
+                        </a>
+                        <a href="#" class="dropdown-menu-item">
+                            <i class="bi bi-chat-dots"></i>
+                            <span>Assistant</span>
+                        </a>
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+
+                    <!-- Upgrade Plan -->
+                    <div class="dropdown-upgrade">
+                        <div class="upgrade-icon">
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <div class="upgrade-text">
+                            <div class="upgrade-title">Upgrade Plan</div>
+                            <div class="upgrade-subtitle">Get premium features</div>
+                        </div>
+                        <i class="bi bi-chevron-right text-secondary"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Button (Keep existing) -->
+            <div class="sidebar-item">
+                <button class="sidebar-btn">
+                    <i class="bi bi-gear sidebar-icon"></i>
+                    <span class="sidebar-label">Settings</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="app-header d-flex align-items-center justify-content-between px-3">
+        <!-- Left: Hamburger + Logo + Search -->
+        <div class="d-flex align-items-center gap-3">
+            <!-- Hamburger Menu (Mobile Only) -->
+            <button class="hamburger-menu" id="hamburgerMenu">
+                <div class="hamburger-icon">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </div>
+            </button>
+
+            <div class="app-title d-flex align-items-center">
+                <i class="bi bi-lightning-fill app-icon me-2"></i>
+                <span class="app-name">E-Office</span>
+            </div>
+            <input type="search" class="form-control form-control-sm header-search" placeholder="Search..." />
+        </div>
+
+        <!-- Right: Theme toggle -->
+        <button id="themeToggle" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-moon-stars-fill"></i>
+        </button>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <div class="main-wrapper d-flex flex-column justify-content-center align-items-center text-center">
+            <!-- Heading -->
+            <h1 class="main-title my-4">
+                <span class="asterisk">✱</span>
+                <span>Back at it, Durgazix</span>
+            </h1>
+
+            <!-- Suggestions -->
+            <div class="suggestions mt-4">
+                <div class="suggestions-grid" id="suggestionsGrid">
+                    <div class="suggestion-card">
+                        <div class="suggestion-title">Plan a project</div>
+                        <div class="suggestion-desc">Break down tasks, timelines, and milestones</div>
+                    </div>
+                    <div class="suggestion-card">
+                        <div class="suggestion-title">Improve UI design</div>
+                        <div class="suggestion-desc">Get suggestions for better UX and layout</div>
+                    </div>
+                    <div class="suggestion-card">
+                        <div class="suggestion-title">Fix a bug</div>
+                        <div class="suggestion-desc">Explain an error and get a solution</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input with File Preview -->
+            <div class="chat-card">
+                <!-- File Preview Container -->
+                <div id="filePreviewContainer" class="file-preview-container" style="display: none;"></div>
+
+                <form class="prompt-form">
+                    <button type="button" class="chat-icon-btn" id="fileTrigger">
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                    <input type="file" class="d-none" id="fileInput" multiple />
+                    <textarea class="prompt-input" placeholder="How can I help you today?"
+                        style="height: 44px; overflow-y: hidden;"></textarea>
+                    <button type="submit" class="send-btn">
+                        <i class="bi bi-arrow-up-short"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Bottom chips -->
+            <div class="chips-container mt-3">
+                <button class="chip-btn">
+                    <i class="bi bi-pen chip-icon"></i>
+                    <span>Write</span>
+                </button>
+                <button class="chip-btn">
+                    <i class="bi bi-journal-bookmark chip-icon"></i>
+                    <span>Learn</span>
+                </button>
+                <button class="chip-btn">
+                    <i class="bi bi-code-slash chip-icon"></i>
+                    <span>Code</span>
+                </button>
+                <button class="chip-btn">
+                    <i class="bi bi-flower3 chip-icon"></i>
+                    <span>Life stuff</span>
+                </button>
+                <button class="chip-btn">
+                    <i class="bi bi-stars chip-icon"></i>
+                    <span>Claude's choice</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Discover Panel -->
+    <aside class="discover-panel">
+        <div class="discover-title">Discover</div>
+        <div class="discover-card">
+            <strong>✨ New</strong>
+            <p>Try structured answers with Code mode</p>
+        </div>
+        <div class="discover-card">
+            <strong>💡 Tip</strong>
+            <p>Use short prompts for faster replies</p>
+        </div>
+    </aside>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
