@@ -330,70 +330,88 @@ function newChat() {
     }
 }
 
-// Profile Dropdown Handler with Mobile Support
+// Profile Dropdown Handler - Fixed for mobile redirects
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const profileTrigger = document.getElementById('profileTrigger');
     const profileDropdown = document.getElementById('profileDropdown');
-    
-    // Create overlay element
-    const overlay = document.createElement('div');
-    overlay.className = 'dropdown-overlay';
-    document.body.appendChild(overlay);
-    
-    // Toggle dropdown
-    function toggleDropdown(e) {
-        e.stopPropagation();
-        const isShown = profileDropdown.classList.contains('show');
-        
-        if (isShown) {
-            closeDropdown();
-        } else {
-            openDropdown();
-        }
+    const sidebar = document.querySelector('.sidebar');
+
+    // Create overlay
+    let overlay = document.querySelector('.dropdown-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'dropdown-overlay';
+        document.body.appendChild(overlay);
     }
-    
+
+    /* ---------------------------
+       OPEN DROPDOWN
+    ---------------------------- */
     function openDropdown() {
         profileDropdown.classList.add('show');
         overlay.classList.add('show');
-        
-        // Add event listener to close on outside click
-        setTimeout(() => {
-            document.addEventListener('click', handleOutsideClick);
-        }, 100);
+        sidebar.classList.add('profile-open');
     }
-    
+
+    /* ---------------------------
+       CLOSE DROPDOWN
+    ---------------------------- */
     function closeDropdown() {
         profileDropdown.classList.remove('show');
         overlay.classList.remove('show');
-        document.removeEventListener('click', handleOutsideClick);
+        sidebar.classList.remove('profile-open');
     }
-    
-    function handleOutsideClick(e) {
-        if (!profileDropdown.contains(e.target) && !profileTrigger.contains(e.target)) {
+
+    /* ---------------------------
+       TOGGLE DROPDOWN
+    ---------------------------- */
+    profileTrigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const isOpen = profileDropdown.classList.contains('show');
+        isOpen ? closeDropdown() : openDropdown();
+    });
+
+    /* ---------------------------
+       OVERLAY CLICK → CLOSE ONLY DROPDOWN
+       (NOT SIDEBAR)
+    ---------------------------- */
+    overlay.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeDropdown();
+    });
+
+    /* ---------------------------
+       PREVENT CLOSING WHEN CLICKING INSIDE DROPDOWN
+    ---------------------------- */
+    profileDropdown.addEventListener('click', function (e) {
+        e.stopPropagation();
+    });
+
+    /* ---------------------------
+       MENU ITEM HANDLING
+    ---------------------------- */
+    profileDropdown.querySelectorAll('.dropdown-menu-item').forEach(item => {
+        item.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+
+            if (!href || href === '#') {
+                e.preventDefault();
+            }
+
             closeDropdown();
-        }
-    }
-    
-    // Event listeners
-    if (profileTrigger) {
-        profileTrigger.addEventListener('click', toggleDropdown);
-    }
-    
-    // Close on overlay click
-    overlay.addEventListener('click', closeDropdown);
-    
-    // Prevent dropdown from closing when clicking inside it
-    if (profileDropdown) {
-        profileDropdown.addEventListener('click', function(e) {
-            e.stopPropagation();
         });
-    }
-    
-    // Close dropdown on ESC key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && profileDropdown.classList.contains('show')) {
+    });
+
+    /* ---------------------------
+       ESC KEY SUPPORT
+    ---------------------------- */
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
             closeDropdown();
         }
     });
 });
+

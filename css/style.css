@@ -13,7 +13,7 @@
     --accent-chip: #1e293b;
     --accent-send: #f97316;
     --accent-send-bg: #3b2416;
-    --badge-bg: #0f172a;
+    --badge-bg: #0f172a;    
     --badge-border: #1e293b;
 }
 
@@ -388,7 +388,7 @@ body::-webkit-scrollbar-thumb:hover {
 .main-wrapper .container-fluid {
     max-width: 1000px;
     margin: 0 auto;
-    padding-left: 40px;
+    padding-left: 120px;
     padding-right: 40px;
 }
 
@@ -1564,14 +1564,22 @@ body::-webkit-scrollbar-thumb:hover {
 /* profile-dropdown */
 .profile-dropdown {
     position: relative;
-    z-index: 1100; /* Higher than sidebar items */
+    z-index: 1100;
+}
+
+/* Ensure all sidebar items and chat list stay below dropdown */
+.sidebar-item:not(.profile-dropdown),
+.chat-item,
+.sidebar-btn:not(.profile-trigger) {
+    position: relative;
+    z-index: 1 !important;
 }
 
 .profile-trigger {
     background: transparent;
     border: 1px solid transparent;
     border-radius: 8px;
-    padding: 8px 12px;
+    padding: 8px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -1604,42 +1612,68 @@ body::-webkit-scrollbar-thumb:hover {
     flex-shrink: 0;
 }
 
-/* Custom Dropdown Menu */
+/* Custom Dropdown Menu - Always floats above sidebar */
 .profile-dropdown-menu {
-    position: fixed; /* Changed from absolute to fixed */
-    bottom: auto;
+    position: fixed !important;
+    bottom: 80px; /* Space from bottom */
     left: 16px; /* Align with sidebar padding */
-    top: auto;
-    transform: translateY(-100%);
-    margin-bottom: 70px; /* Space from bottom of sidebar */
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 12px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+    z-index: 99999999 !important; /* Extremely high z-index */
+    min-width: 280px;
+    max-width: 320px;
+    width: 280px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    isolation: isolate;
+    pointer-events: none;
+}
+
+/* .profile-dropdown-menu {
+    position: fixed;
+    bottom: 80px;
+    left: 16px;
     background: var(--bg-card);
     border: 1px solid var(--border-card);
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    z-index: 999999; /* Extremely high z-index for mobile */
-    min-width: 280px;
-    max-width: 320px;
+    z-index: 9999999;
     opacity: 0;
+    transform: translateY(-10px);
     visibility: hidden;
     transition: all 0.2s ease;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
 
-/* Improved backgrounds for better visibility */
+.profile-dropdown-menu.open {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+} */
+
+/* Theme-specific backgrounds */
 [data-bs-theme="dark"] .profile-dropdown-menu {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-    background: rgba(26, 27, 30, 0.98); /* More opaque for dark mode */
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8);
+    background: rgb(26, 27, 30) !important;
 }
 
 [data-bs-theme="light"] .profile-dropdown-menu {
-    background: rgba(255, 255, 255, 0.98); /* More opaque for light mode */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    background: rgb(255, 255, 255) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
 }
 
 .profile-dropdown-menu.show {
     opacity: 1;
     visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 /* User Info Section */
@@ -1691,6 +1725,26 @@ body::-webkit-scrollbar-thumb:hover {
 /* Menu Items */
 .dropdown-menu-items {
     padding: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Custom scrollbar */
+.dropdown-menu-items::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dropdown-menu-items::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dropdown-menu-items::-webkit-scrollbar-thumb {
+    background: var(--border-card);
+    border-radius: 3px;
+}
+
+.dropdown-menu-items::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
 }
 
 .dropdown-menu-item {
@@ -1771,6 +1825,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .upgrade-text {
     flex: 1;
+    min-width: 0;
 }
 
 .upgrade-title {
@@ -1778,64 +1833,82 @@ body::-webkit-scrollbar-thumb:hover {
     font-size: 14px;
     color: var(--text-primary);
     margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .upgrade-subtitle {
     font-size: 12px;
     color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Sidebar expanded state adjustments */
-.sidebar.expanded .profile-dropdown-menu {
-    left: 60px;
-    min-width: 280px;
+.upgrade-arrow {
+    color: var(--text-secondary);
+    flex-shrink: 0;
 }
 
-.sidebar:not(.expanded) .profile-dropdown-menu {
-    left: 60px;
-    min-width: 280px;
+/* Responsive - Mobile and Tablet */
+@media (max-width: 1024px) {
+    .profile-dropdown-menu {
+        left: 16px !important;
+        width: 280px;
+        min-width: 280px;
+        max-width: calc(100vw - 32px);
+    }
 }
 
-/* Responsive - Mobile specific fixes */
 @media (max-width: 768px) {
     .profile-dropdown-menu {
-        left: 60px !important;
-        min-width: 260px;
-        max-width: calc(100vw - 32px);
-        z-index: 999999 !important; /* Force high z-index on mobile */
+        left: 16px !important;
+        right: auto !important;
+        width: 260px !important;
+        min-width: 260px !important;
+        max-width: calc(100vw - 32px) !important;
+        z-index: 99999999 !important;
     }
     
-    /* Ensure dropdown is above all mobile elements */
+    /* Ensure solid background on mobile */
     [data-bs-theme="dark"] .profile-dropdown-menu {
-        background: rgba(26, 27, 30, 0.99); /* Even more opaque on mobile */
+        background: rgb(26, 27, 30) !important;
     }
     
     [data-bs-theme="light"] .profile-dropdown-menu {
-        background: rgba(255, 255, 255, 0.99); /* Even more opaque on mobile */
+        background: rgb(255, 255, 255) !important;
     }
 }
 
 @media (max-width: 480px) {
     .profile-dropdown-menu {
-        left: 8px !important;
-        min-width: 240px;
-        max-width: calc(100vw - 16px);
-        z-index: 999999 !important;
+        left: 16px !important;
+        right: 16px !important;
+        width: calc(100vw - 32px) !important;
+        min-width: 240px !important;
+        max-width: unset !important;
+        z-index: 99999999 !important;
     }
 }
 
-/* Overlay for mobile to prevent interaction with elements behind */
+/* Overlay - always show when dropdown is open */
 .dropdown-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: transparent;
-    z-index: 99998; /* Just below the dropdown */
+    z-index: 99999998 !important; /* Just below the dropdown */
     display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
 .dropdown-overlay.show {
     display: block;
+    opacity: 1;
+}
+.sidebar.profile-open {
+    pointer-events: auto;
 }
