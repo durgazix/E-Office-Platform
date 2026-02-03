@@ -2000,22 +2000,14 @@ body::-webkit-scrollbar-thumb:hover {
 
 /* Responsive padding */
 @media (min-width: 768px) {
-    .signin-card {
-        padding: 3rem 2.5rem;
-    }
-
+    .signin-card,
     .signup-card {
         padding: 3rem 2.5rem;
     }
 }
 
 @media (max-width: 767px) {
-    .signin-card {
-        padding: 2rem 1.5rem;
-        margin: 1rem;
-        max-width: 100%;
-    }
-
+    .signin-card,
     .signup-card {
         padding: 2rem 1.5rem;
         margin: 1rem;
@@ -2069,48 +2061,56 @@ body::-webkit-scrollbar-thumb:hover {
     }
 }
 
-.signin-card-content {
+.signin-card-content,
+.signup-card-content {
     position: relative;
     z-index: 2;
 }
 
 /* Heading - Responsive */
-.signin-card h1 {
+.signin-card h1,
+.signup-card h1 {
     font-weight: 600;
     text-align: center;
     color: var(--text-primary);
 }
 
 @media (min-width: 768px) {
-    .signin-card h1 {
+    .signin-card h1,
+    .signup-card h1 {
         font-size: 1.75rem;
     }
 }
 
 @media (max-width: 767px) {
-    .signin-card h1 {
+    .signin-card h1,
+    .signup-card h1 {
         font-size: 1.5rem;
     }
 }
 
-.signin-card .subtitle {
+.signin-card .subtitle,
+.signup-card .subtitle {
     text-align: center;
     color: var(--text-secondary);
     font-size: 0.9375rem;
 }
 
 @media (max-width: 767px) {
-    .signin-card .subtitle {
+    .signin-card .subtitle,
+    .signup-card .subtitle {
         font-size: 0.875rem;
     }
 }
 
-.signin-card .subtitle a {
+.signin-card .subtitle a,
+.signup-card .subtitle a {
     color: #4285f4;
     text-decoration: none;
 }
 
-.signin-card .subtitle a:hover {
+.signin-card .subtitle a:hover,
+.signup-card .subtitle a:hover {
     text-decoration: underline;
 }
 
@@ -2256,311 +2256,6 @@ body::-webkit-scrollbar-thumb:hover {
     color: var(--text-secondary);
 }
 
-/* Sign in button with water fill effect */
-.btn-signin {
-    width: 100%;
-    padding: 0.875rem;
-    background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-signin::before {
-    content: '';
-    position: absolute;
-    bottom: -100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.4) 100%);
-    transition: bottom 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.btn-signin.filling::before {
-    bottom: 0;
-}
-
-.btn-signin span {
-    position: relative;
-    z-index: 1;
-}
-
-.btn-signin:hover {
-    background: linear-gradient(135deg, #8a96aa 0%, #5b677f 100%);
-}
-
-.btn-signin:active {
-    transform: translateY(0);
-}
-
-/* Terms text */
-.terms-text {
-    text-align: center;
-    font-size: 0.8125rem;
-    color: var(--text-secondary);
-}
-
-@media (max-width: 767px) {
-    .terms-text {
-        font-size: 0.75rem;
-    }
-}
-
-.terms-text a {
-    color: #4285f4;
-    text-decoration: none;
-}
-
-.terms-text a:hover {
-    text-decoration: underline;
-}
-
-/* Top right icons - Responsive positioning */
-@media (min-width: 768px) {
-    .top-icons {
-        position: fixed;
-        top: 2rem;
-        right: 2.5rem;
-        z-index: 100;
-    }
-}
-
-@media (max-width: 767px) {
-    .top-icons {
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
-        z-index: 100;
-    }
-
-    .theme-toggle {
-        padding: 0.5rem 0.75rem;
-        font-size: 1rem;
-    }
-}
-
-/* Dark mode specific input styling */
-[data-bs-theme="dark"] .form-control {
-    color: var(--text-primary);
-}
-
-[data-bs-theme="dark"] .form-control::placeholder {
-    color: var(--text-secondary);
-}
-
-/* Floating animation */
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0) rotate(var(--rotate-start));
-    }
-
-    50% {
-        transform: translateY(-20px) rotate(var(--rotate-end));
-    }
-}
-
-/* Touch-friendly mobile adjustments */
-@media (max-width: 767px) {
-
-    .social-btn,
-    .sso-btn,
-    .btn-signin {
-        min-height: 44px;
-        /* iOS touch target size */
-    }
-
-    .form-control {
-        font-size: 16px;
-        /* Prevent zoom on iOS */
-    }
-}
-
-.signup-card-content {
-    position: relative;
-    z-index: 2;
-}
-
-/* Heading - Responsive */
-.signup-card h1 {
-    font-weight: 600;
-    text-align: center;
-    color: var(--text-primary);
-}
-
-@media (min-width: 768px) {
-    .signup-card h1 {
-        font-size: 1.75rem;
-    }
-}
-
-@media (max-width: 767px) {
-    .signup-card h1 {
-        font-size: 1.5rem;
-    }
-}
-
-.signup-card .subtitle {
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.9375rem;
-}
-
-@media (max-width: 767px) {
-    .signup-card .subtitle {
-        font-size: 0.875rem;
-    }
-}
-
-.signup-card .subtitle a {
-    color: #4285f4;
-    text-decoration: none;
-}
-
-.signup-card .subtitle a:hover {
-    text-decoration: underline;
-}
-
-/* Social buttons - Bootstrap Grid */
-.social-btn {
-    background-color: var(--bg-main);
-    border: 1px solid var(--border-card);
-    border-radius: 8px;
-    padding: 0.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-size: 1.25rem;
-    color: var(--text-primary);
-    position: relative;
-    overflow: hidden;
-}
-
-/* Diagonal fill effect for social buttons */
-.social-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, transparent 0%, rgba(66, 133, 244, 0.1) 50%, transparent 100%);
-    transition: left 0.5s ease;
-}
-
-.social-btn:hover::before {
-    left: 100%;
-}
-
-.social-btn:hover {
-    border-color: #4285f4;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.2);
-}
-
-.social-btn i {
-    position: relative;
-    z-index: 1;
-}
-
-/* SSO Button */
-.sso-btn {
-    background-color: var(--bg-main);
-    border: 1px solid var(--border-card);
-    border-radius: 8px;
-    padding: 0.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    color: var(--text-primary);
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-}
-
-.sso-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent 0%, rgba(66, 133, 244, 0.1) 50%, transparent 100%);
-    transition: left 0.5s ease;
-}
-
-.sso-btn:hover::before {
-    left: 100%;
-}
-
-.sso-btn:hover {
-    border-color: #4285f4;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.2);
-}
-
-/* Divider */
-.divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-}
-
-.divider::before,
-.divider::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid var(--border-card);
-}
-
-.divider span {
-    padding: 0 1rem;
-}
-
-/* Form styles */
-.form-label {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--text-primary);
-}
-
-.form-control {
-    background-color: var(--bg-main);
-    border: 1px solid var(--border-card);
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    font-size: 0.9375rem;
-    color: var(--text-primary);
-    transition: all 0.2s;
-}
-
-.form-control:focus {
-    outline: none;
-    border-color: #4285f4;
-    box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.1);
-    background-color: var(--bg-card);
-}
-
-.form-control::placeholder {
-    color: var(--text-secondary);
-}
-
 /* Password strength indicator */
 .password-strength {
     height: 4px;
@@ -2615,6 +2310,50 @@ body::-webkit-scrollbar-thumb:hover {
 
 .requirement.not-met {
     color: var(--text-secondary);
+}
+
+/* Sign in button with water fill effect */
+.btn-signin {
+    width: 100%;
+    padding: 0.875rem;
+    background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-signin::before {
+    content: '';
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.4) 100%);
+    transition: bottom 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn-signin.filling::before {
+    bottom: 0;
+}
+
+.btn-signin span {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-signin:hover {
+    background: linear-gradient(135deg, #8a96aa 0%, #5b677f 100%);
+}
+
+.btn-signin:active {
+    transform: translateY(0);
 }
 
 /* Sign up button with water fill effect */
@@ -2741,11 +2480,23 @@ body::-webkit-scrollbar-thumb:hover {
     color: var(--text-secondary);
 }
 
+/* Floating animation */
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0) rotate(var(--rotate-start));
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(var(--rotate-end));
+    }
+}
+
 /* Touch-friendly mobile adjustments */
 @media (max-width: 767px) {
-
     .social-btn,
     .sso-btn,
+    .btn-signin,
     .btn-signup {
         min-height: 44px;
         /* iOS touch target size */

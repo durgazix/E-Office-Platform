@@ -1,3 +1,8 @@
+(function () {
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    document.body.setAttribute("data-bs-theme", savedTheme);
+})();
+
 // ===== THEME MANAGEMENT WITH LOCALSTORAGE =====
 const themeToggle = document.getElementById("themeToggle");
 const html = document.body;
@@ -5,8 +10,8 @@ const html = document.body;
 // Function to apply theme
 function applyTheme(theme) {
     html.setAttribute("data-bs-theme", theme);
-    themeToggle.innerHTML = theme === "dark" 
-        ? '<i class="bi bi-moon-stars-fill"></i>' 
+    themeToggle.innerHTML = theme === "dark"
+        ? '<i class="bi bi-moon-stars-fill"></i>'
         : '<i class="bi bi-sun-fill"></i>';
 }
 
@@ -42,47 +47,47 @@ function formatFileSize(bytes) {
 // Function to get file icon and color class based on file type
 function getFileIcon(fileName, mimeType) {
     const extension = fileName.split('.').pop().toLowerCase();
-    
+
     // Image files
     if (mimeType.startsWith('image/') || ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'bmp'].includes(extension)) {
         return { icon: 'bi-image-fill', class: 'file-icon-image' };
     }
-    
+
     // PDF files
     if (extension === 'pdf' || mimeType === 'application/pdf') {
         return { icon: 'bi-file-pdf-fill', class: 'file-icon-pdf' };
     }
-    
+
     // Document files
     if (['doc', 'docx', 'txt', 'rtf', 'odt'].includes(extension)) {
         return { icon: 'bi-file-text-fill', class: 'file-icon-doc' };
     }
-    
+
     // Excel files
     if (['xls', 'xlsx', 'csv'].includes(extension)) {
         return { icon: 'bi-file-excel-fill', class: 'file-icon-excel' };
     }
-    
+
     // Video files
     if (mimeType.startsWith('video/') || ['mp4', 'avi', 'mov', 'mkv', 'webm'].includes(extension)) {
         return { icon: 'bi-camera-video-fill', class: 'file-icon-video' };
     }
-    
+
     // Audio files
     if (mimeType.startsWith('audio/') || ['mp3', 'wav', 'ogg', 'm4a'].includes(extension)) {
         return { icon: 'bi-music-note-beamed', class: 'file-icon-audio' };
     }
-    
+
     // Archive files
     if (['zip', 'rar', '7z', 'tar', 'gz'].includes(extension)) {
         return { icon: 'bi-file-zip-fill', class: 'file-icon-archive' };
     }
-    
+
     // Code files
     if (['js', 'html', 'css', 'json', 'xml', 'py', 'java', 'cpp', 'c', 'php'].includes(extension)) {
         return { icon: 'bi-code-slash', class: 'file-icon-code' };
     }
-    
+
     // Default
     return { icon: 'bi-file-earmark-fill', class: 'file-icon-default' };
 }
@@ -91,11 +96,11 @@ function getFileIcon(fileName, mimeType) {
 function createFilePreview(file, index) {
     const fileInfo = getFileIcon(file.name, file.type);
     const extension = file.name.split('.').pop().toLowerCase();
-    
+
     const previewItem = document.createElement('div');
     previewItem.className = 'file-preview-item';
     previewItem.dataset.index = index;
-    
+
     // Check if it's an image and create thumbnail
     if (file.type.startsWith('image/')) {
         const reader = new FileReader();
@@ -107,7 +112,7 @@ function createFilePreview(file, index) {
         };
         reader.readAsDataURL(file);
     }
-    
+
     previewItem.innerHTML = `
         <div class="file-icon-wrapper ${fileInfo.class}">
             <i class="bi ${fileInfo.icon}"></i>
@@ -126,23 +131,23 @@ function createFilePreview(file, index) {
             <i class="bi bi-x-lg"></i>
         </button>
     `;
-    
+
     return previewItem;
 }
 
 // Function to update file preview display
 function updateFilePreview() {
     const container = document.getElementById('filePreviewContainer');
-    
+
     if (selectedFiles.length === 0) {
         container.style.display = 'none';
         container.innerHTML = '';
         return;
     }
-    
+
     container.style.display = 'flex';
     container.innerHTML = '';
-    
+
     selectedFiles.forEach((file, index) => {
         if (file) {
             container.appendChild(createFilePreview(file, index));
@@ -154,7 +159,7 @@ function updateFilePreview() {
 function removeFile(index) {
     selectedFiles.splice(index, 1);
     updateFilePreview();
-    
+
     // Clear file input if no files remain
     const fileInput = document.getElementById('fileInput');
     if (selectedFiles.length === 0 && fileInput) {
@@ -253,13 +258,13 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ===== File picker with preview ===== */
     const triggerBtn = document.getElementById("fileTrigger");
     const fileInput = document.getElementById("fileInput");
-    
+
     if (triggerBtn && fileInput) {
         triggerBtn.addEventListener("click", () => fileInput.click());
-        
+
         fileInput.addEventListener("change", (e) => {
             const files = Array.from(e.target.files);
-            
+
             if (files.length > 0) {
                 // Add new files to existing selection
                 selectedFiles = [...selectedFiles, ...files];
@@ -267,20 +272,20 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-    
+
     /* ===== Form submission handler ===== */
     const promptForm = document.querySelector('.prompt-form');
     if (promptForm) {
         promptForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             // Get the message
             const message = textarea.value.trim();
-            
+
             if (message || selectedFiles.length > 0) {
                 console.log('Sending message:', message);
                 console.log('With files:', selectedFiles);
-                
+
                 // Here you would handle the actual submission
                 // For now, just clear the form
                 textarea.value = '';
@@ -311,16 +316,16 @@ document.addEventListener("DOMContentLoaded", () => {
 function newChat() {
     const chatContainer = document.getElementById('chatContainer');
     const chatInput = document.getElementById('chatInput');
-    
+
     if (chatContainer) {
         chatContainer.innerHTML = '';
         chatContainer.scrollTop = 0;
     }
-    
+
     if (chatInput) {
         chatInput.value = '';
     }
-    
+
     // Clear selected files
     selectedFiles = [];
     updateFilePreview();
@@ -345,27 +350,18 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.appendChild(overlay);
     }
 
-    /* ---------------------------
-       OPEN DROPDOWN
-    ---------------------------- */
     function openDropdown() {
         profileDropdown.classList.add('show');
         overlay.classList.add('show');
         sidebar.classList.add('profile-open');
     }
 
-    /* ---------------------------
-       CLOSE DROPDOWN
-    ---------------------------- */
     function closeDropdown() {
         profileDropdown.classList.remove('show');
         overlay.classList.remove('show');
         sidebar.classList.remove('profile-open');
     }
 
-    /* ---------------------------
-       TOGGLE DROPDOWN
-    ---------------------------- */
     profileTrigger.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -374,25 +370,15 @@ document.addEventListener('DOMContentLoaded', function () {
         isOpen ? closeDropdown() : openDropdown();
     });
 
-    /* ---------------------------
-       OVERLAY CLICK → CLOSE ONLY DROPDOWN
-       (NOT SIDEBAR)
-    ---------------------------- */
     overlay.addEventListener('click', function (e) {
         e.stopPropagation();
         closeDropdown();
     });
 
-    /* ---------------------------
-       PREVENT CLOSING WHEN CLICKING INSIDE DROPDOWN
-    ---------------------------- */
     profileDropdown.addEventListener('click', function (e) {
         e.stopPropagation();
     });
 
-    /* ---------------------------
-       MENU ITEM HANDLING
-    ---------------------------- */
     profileDropdown.querySelectorAll('.dropdown-menu-item').forEach(item => {
         item.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -405,9 +391,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    /* ---------------------------
-       ESC KEY SUPPORT
-    ---------------------------- */
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             closeDropdown();
@@ -415,3 +398,224 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById("chatSearch");
+    const timelineItems = document.querySelectorAll(".timeline-item");
+
+    searchInput.addEventListener("input", function () {
+        const query = this.value.toLowerCase();
+
+        timelineItems.forEach(item => {
+            const title = item.querySelector(".chat-title")?.textContent.toLowerCase() || "";
+            const snippet = item.querySelector(".chat-snippet")?.textContent.toLowerCase() || "";
+
+            item.style.display =
+                title.includes(query) || snippet.includes(query)
+                    ? ""
+                    : "none";
+        });
+    });
+    document.addEventListener("click", function (e) {
+        const btn = e.target.closest(".continue-chat");
+        if (!btn) return;
+
+        const card = btn.closest(".history-card");
+
+        const title = card.querySelector(".chat-title")?.textContent.trim();
+        const snippet = card.querySelector(".chat-snippet")?.textContent.trim();
+        const time = card.closest(".timeline-item")
+            .querySelector(".timeline-date")?.textContent.trim();
+
+        openChatFromHistory({ title, snippet, time });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    /* =========================
+       PASSWORD STRENGTH CHECKER
+    ========================= */
+    function checkPasswordStrength() {
+        const password = document.getElementById('passwordInput').value;
+        const confirmPassword = document.getElementById('confirmPasswordInput').value;
+        const strengthBar = document.getElementById('strengthBar');
+        const signupBtn = document.getElementById('signupBtn');
+        const termsChecked = document.getElementById('termsCheck').checked;
+
+        // Reset if empty
+        if (!password) {
+            strengthBar.className = 'password-strength-bar';
+            signupBtn.disabled = true;
+            updateRequirement('req-length', false);
+            updateRequirement('req-uppercase', false);
+            updateRequirement('req-number', false);
+            return;
+        }
+
+        // Requirements
+        const hasLength = password.length >= 8;
+        const hasUppercase = /[A-Z]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
+        const passwordsMatch = password === confirmPassword;
+
+        // Update requirement indicators
+        updateRequirement('req-length', hasLength);
+        updateRequirement('req-uppercase', hasUppercase);
+        updateRequirement('req-number', hasNumber);
+
+        // Strength calculation
+        let strength = 0;
+        if (hasLength) strength++;
+        if (hasUppercase) strength++;
+        if (hasNumber) strength++;
+
+        // Update strength bar
+        strengthBar.className = 'password-strength-bar';
+        if (strength === 1) {
+            strengthBar.classList.add('strength-weak');
+        } else if (strength === 2) {
+            strengthBar.classList.add('strength-medium');
+        } else if (strength === 3) {
+            strengthBar.classList.add('strength-strong');
+        }
+
+        // Enable / disable signup button
+        signupBtn.disabled = !(
+            hasLength &&
+            hasUppercase &&
+            hasNumber &&
+            termsChecked &&
+            passwordsMatch
+        );
+    }
+
+    function updateRequirement(id, met) {
+        const element = document.getElementById(id);
+        if (!element) return;
+
+        if (met) {
+            element.classList.remove('not-met');
+            element.classList.add('met');
+            element.querySelector('i').className = 'bi bi-check-circle-fill';
+        } else {
+            element.classList.remove('met');
+            element.classList.add('not-met');
+            element.querySelector('i').className = 'bi bi-circle';
+        }
+    }
+
+    /* =========================
+       EVENT LISTENERS
+    ========================= */
+    document.getElementById('passwordInput')
+        .addEventListener('input', checkPasswordStrength);
+
+    document.getElementById('confirmPasswordInput')
+        .addEventListener('input', function () {
+            const password = document.getElementById('passwordInput').value;
+            const confirmPassword = this.value;
+            const mismatchMsg = document.getElementById('passwordMismatch');
+            const signupBtn = document.getElementById('signupBtn');
+
+            if (confirmPassword && password !== confirmPassword) {
+                mismatchMsg.classList.remove('d-none');
+                signupBtn.disabled = true;
+            } else {
+                mismatchMsg.classList.add('d-none');
+                checkPasswordStrength();
+            }
+        });
+
+    document.getElementById('termsCheck')
+        .addEventListener('change', checkPasswordStrength);
+
+    /* =========================
+       SIGN UP HANDLER
+    ========================= */
+    window.handleSignUp = function (event) {
+        event.preventDefault();
+
+        const firstName = document.getElementById('firstNameInput').value;
+        const lastName = document.getElementById('lastNameInput').value;
+        const email = document.getElementById('emailInput').value;
+        const password = document.getElementById('passwordInput').value;
+        const confirmPassword = document.getElementById('confirmPasswordInput').value;
+        const waterFill = document.getElementById('waterFill');
+        const signupBtn = document.getElementById('signupBtn');
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            return false;
+        }
+
+        signupBtn.classList.add('filling');
+        waterFill.classList.add('active');
+
+        console.log('Sign up attempted:', {
+            firstName,
+            lastName,
+            email,
+            password: '***'
+        });
+
+        setTimeout(() => {
+            alert(`Account created successfully! 🌊\n\nWelcome, ${firstName} ${lastName}!`);
+
+            setTimeout(() => {
+                waterFill.classList.remove('active');
+                signupBtn.classList.remove('filling');
+                // window.location.href = 'signin.html';
+            }, 500);
+        }, 1500);
+
+        return false;
+    };
+
+    /* =========================
+       SOCIAL SIGN UP MOCKS
+    ========================= */
+    window.signUpWithTwitter = function () {
+        triggerWaterEffect();
+        setTimeout(() => {
+            alert('Twitter sign-up would be implemented here! 🐦');
+            resetWaterEffect();
+        }, 1500);
+    };
+
+    window.signUpWithGithub = function () {
+        triggerWaterEffect();
+        setTimeout(() => {
+            alert('GitHub sign-up would be implemented here! 🐙');
+            resetWaterEffect();
+        }, 1500);
+    };
+
+    window.signUpWithSSO = function () {
+        triggerWaterEffect();
+        setTimeout(() => {
+            alert('Google sign-up would be implemented here! 🔐');
+            resetWaterEffect();
+        }, 1500);
+    };
+
+    function triggerWaterEffect() {
+        document.getElementById('waterFill').classList.add('active');
+    }
+
+    function resetWaterEffect() {
+        document.getElementById('waterFill').classList.remove('active');
+    }
+
+    /* =========================
+       iOS DOUBLE TAP FIX
+    ========================= */
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+
+});
