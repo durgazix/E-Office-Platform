@@ -1924,6 +1924,13 @@ ol {
   border-radius: 5px;
 }
 
+@media (min-width: 992px) {
+  .navbar-nav .nav-item .sub-menu#submenu-1-2,
+  .navbar-nav .nav-item .sub-menu#submenu-1-4 {
+    min-width: 320px;
+  }
+}
+
 .navbar-nav .nav-item:hover .sub-menu {
   top: 100% !important;
 }
@@ -1931,6 +1938,7 @@ ol {
 .navbar-nav .nav-item .sub-menu .nav-item {
   width: 100%;
   margin-bottom: 15px;
+  /* gap: 4px;; */
 }
 
 .navbar-nav .nav-item .sub-menu .nav-item:last-child {
