@@ -5487,7 +5487,7 @@ only screen and (min-width: 1400px) {
   position: relative;
   overflow: hidden;
   padding: 140px 0 90px;
-  background: linear-gradient(135deg, #0d2236 0%, #1d3755 55%, #2f4b6d 100%);
+  background: #ffffff;
 }
 
 .analyzer-hero::before,
@@ -5497,7 +5497,7 @@ only screen and (min-width: 1400px) {
   width: 420px;
   height: 420px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(34, 196, 255, 0.22), rgba(34, 196, 255, 0));
+  background: radial-gradient(circle, rgba(169, 205, 226, 0.18), rgba(169, 205, 226, 0));
   filter: blur(2px);
   z-index: 0;
 }
@@ -5520,11 +5520,12 @@ only screen and (min-width: 1400px) {
 .analyzer-hero .hero-content h1,
 .analyzer-hero .hero-content p,
 .analyzer-hero .hero-content .subtitle {
-  color: #ffffff;
+  color: #081828;
 }
 
 .analyzer-hero .hero-content p {
-  opacity: 0.85;
+  color: #6b7280;
+  opacity: 1;
 }
 
 .analyzer-hero .hero-content .subtitle {
@@ -5544,8 +5545,9 @@ only screen and (min-width: 1400px) {
 }
 
 .analyzer-hero .hero-badges .badge {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
+  background: #f4f7ff;
+  color: #081828;
+  border: 1px solid #e6eef7;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.3px;
@@ -5560,20 +5562,19 @@ only screen and (min-width: 1400px) {
 }
 
 .analyzer-hero .button .btn.btn-alt {
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: linear-gradient(180deg, #f7f9fc 0%, #ffffff 60%, #f7f9fc 100%);
+  color: #081828;
+  border: 1px solid #e6eef7;
 }
 
 .analyzer-mockup {
   position: relative;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #ffffff;
+  border: 1px solid #e6eef7;
   border-radius: 24px;
   padding: 22px;
-  backdrop-filter: blur(18px);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 30px 80px rgba(15, 42, 74, 0.12);
 }
 
 .mockup-header {
@@ -5586,11 +5587,11 @@ only screen and (min-width: 1400px) {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
+  background: #dfe7f1;
 }
 
 .mockup-content label {
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b7280;
   font-size: 13px;
   margin-bottom: 8px;
   display: block;
@@ -5598,10 +5599,10 @@ only screen and (min-width: 1400px) {
 
 .mockup-input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #f8fbff;
+  border: 1px solid #e6eef7;
   border-radius: 16px;
-  color: #ffffff;
+  color: #081828;
   padding: 14px 16px;
   resize: none;
   outline: none;
@@ -5611,7 +5612,7 @@ only screen and (min-width: 1400px) {
 }
 
 .mockup-input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: #9aa5b1;
 }
 
 .analyze-btn {
@@ -5630,20 +5631,22 @@ only screen and (min-width: 1400px) {
 }
 
 .output-preview {
-  background: rgba(255, 255, 255, 0.12);
+  background: #f8fbff;
   border-radius: 16px;
   padding: 16px;
-  color: #ffffff;
+  color: #081828;
+  border: 1px solid #e6eef7;
 }
 
 .output-preview h6 {
   margin-bottom: 10px;
-  color: #ffffff;
+  color: #081828;
 }
 
 .output-preview ul li {
   font-size: 14px;
   margin-bottom: 8px;
+  color: #6b7280;
 }
 
 .how-it-works {
@@ -5683,6 +5686,7 @@ only screen and (min-width: 1400px) {
 .compliance-hero {
   padding: 120px 0 90px;
   background: transparent;
+  background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 60%, #f7f9fc 100%);
 }
 
 .compliance-hero .hero-content h4 {
@@ -5951,6 +5955,310 @@ only screen and (min-width: 1400px) {
 
 @media (max-width: 991px) {
   .pdf-hero {
+    padding: 90px 0 70px;
+  }
+}
+
+/* AI Studio Image Generation */
+.ai-studio-hero {
+  padding: 120px 0 90px;
+  background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 60%, #f7f9fc 100%);
+}
+
+.ai-studio-hero .hero-content .subtitle {
+  color: #a9cde2;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.ai-studio-hero .hero-content h1 {
+  color: #081828;
+  margin-bottom: 16px;
+}
+
+.ai-studio-hero .hero-content p {
+  color: #6b7280;
+}
+
+.ai-studio-hero .button .btn {
+  background: #a9cde2;
+  border: none;
+}
+
+.ai-studio-hero .button .btn.btn-alt {
+  background: #ffffff;
+  color: #081828;
+  border: 1px solid #e6eef7;
+}
+
+.ai-studio-hero-image {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid #e6eef7;
+  box-shadow: 0 24px 60px rgba(15, 42, 74, 0.12);
+}
+
+.ai-studio-hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+}
+
+.ai-image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.ai-image-card {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e6eef7;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(15, 42, 74, 0.08);
+}
+
+.ai-image-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+@media (max-width: 991px) {
+  .ai-studio-hero {
+    padding: 90px 0 70px;
+  }
+
+  .ai-image-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .ai-image-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* PowerPoint Generation */
+.ppt-hero {
+  padding: 120px 0 90px;
+  background: linear-gradient(150deg, #f8fbff 0%, #ffffff 55%, #eef3ff 100%);
+}
+
+.ppt-hero .hero-content .subtitle {
+  color: #a9cde2;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.ppt-hero .hero-content h1 {
+  color: #081828;
+  margin-bottom: 16px;
+}
+
+.ppt-hero .hero-content p {
+  color: #6b7280;
+}
+
+.ppt-hero .button .btn {
+  background: #a9cde2;
+  border: none;
+}
+
+.ppt-hero .button .btn.btn-alt {
+  background: #ffffff;
+  color: #081828;
+  border: 1px solid #e6eef7;
+}
+
+.ppt-hero .hero-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.ppt-hero .meta-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px 18px;
+  border: 1px solid #e6eef7;
+  box-shadow: 0 18px 40px rgba(15, 42, 74, 0.08);
+}
+
+.ppt-hero .meta-card h6 {
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #081828;
+}
+
+.ppt-hero .meta-card p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.ppt-hero-visual {
+  position: relative;
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 26px;
+  border: 1px solid #e6eef7;
+  box-shadow: 0 28px 70px rgba(15, 42, 74, 0.12);
+}
+
+.ppt-hero-visual img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+}
+
+.ppt-hero-accent {
+  position: absolute;
+  bottom: -18px;
+  left: 18px;
+  right: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ppt-hero-accent span {
+  background: #ffffff;
+  border: 1px solid #e6eef7;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 12px;
+  color: #081828;
+  box-shadow: 0 12px 30px rgba(15, 42, 74, 0.08);
+}
+
+.ppt-features {
+  background: #ffffff;
+}
+
+.ppt-feature-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px;
+  border: 1px solid #e6eef7;
+  box-shadow: 0 18px 40px rgba(15, 42, 74, 0.08);
+  height: 100%;
+}
+
+.ppt-feature-card h4 {
+  margin-bottom: 10px;
+  color: #081828;
+  font-size: 18px;
+}
+
+.ppt-feature-card p {
+  margin: 0;
+  color: #6b7280;
+}
+
+@media (max-width: 991px) {
+  .ppt-hero {
+    padding: 90px 0 70px;
+  }
+
+  .ppt-hero .hero-meta {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ppt-hero-accent {
+    position: static;
+    margin-top: 16px;
+  }
+}
+/* Email Generation & Automation */
+.email-hero {
+  padding: 120px 0 90px;
+  background: linear-gradient(135deg, #f7f9fc 0%, #ffffff 55%, #eef6ff 100%);
+}
+
+.email-hero .hero-content .subtitle {
+  color: #a9cde2;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.email-hero .hero-content h1 {
+  color: #081828;
+  margin-bottom: 16px;
+}
+
+.email-hero .hero-content p {
+  color: #6b7280;
+}
+
+.email-hero .button .btn {
+  background: #a9cde2;
+  border: none;
+}
+
+.email-hero .button .btn.btn-alt {
+  background: #ffffff;
+  color: #081828;
+  border: 1px solid #e6eef7;
+}
+
+.email-hero-image {
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 26px;
+  border: 1px solid #e6eef7;
+  box-shadow: 0 28px 70px rgba(15, 42, 74, 0.12);
+}
+
+.email-hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+}
+
+.email-automation {
+  background: #ffffff;
+}
+
+.email-card {
+  background: #f8fbff;
+  border-radius: 18px;
+  padding: 24px;
+  border: 1px solid #e6eef7;
+  box-shadow: 0 18px 40px rgba(15, 42, 74, 0.06);
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+.email-card h4 {
+  margin-bottom: 10px;
+  color: #081828;
+  font-size: 18px;
+}
+
+.email-card p {
+  margin: 0;
+  color: #6b7280;
+}
+
+@media (max-width: 991px) {
+  .email-hero {
     padding: 90px 0 70px;
   }
 }
