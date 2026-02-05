@@ -5315,7 +5315,7 @@ only screen and (min-width: 1400px) {
 
 .chat-bubble.user {
   background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  /* color: #ffffff; */
   margin-left: 40px;
 }
 
@@ -5415,6 +5415,15 @@ only screen and (min-width: 1400px) {
     font-size: 26px;
     color: #a9cde2; /* adjust to your theme color */
     flex-shrink: 0;
+}
+
+.pdf-feature {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px;
+  border: 1px solid #e6eef7;
+  box-shadow: 0 18px 40px rgba(15, 42, 74, 0.08);
+  height: 100%;
 }
 
 .ai-usecase h4 {
@@ -5870,6 +5879,78 @@ only screen and (min-width: 1400px) {
 
 @media (max-width: 991px) {
   .tender-hero {
+    padding: 90px 0 70px;
+  }
+}
+
+/* Chat With PDF Hero (No Background) */
+.pdf-hero {
+  padding: 120px 0 90px;
+  background: transparent;
+  background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 60%, #f7f9fc 100%);
+}
+
+.pdf-hero .hero-content h4 {
+  color: #a9cde2;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.pdf-hero .hero-content h1 {
+  color: #081828;
+  margin-bottom: 16px;
+}
+
+.pdf-hero .hero-content p {
+  color: #6b7280;
+}
+
+.pdf-hero .hero-badges span {
+  background: #f4f7ff;
+  color: #081828;
+  border: 1px solid #e6eef7;
+}
+
+.pdf-hero .button .btn {
+  background: #a9cde2;
+  border: none;
+}
+
+.pdf-hero .button .btn.btn-alt {
+  background: #ffffff;
+  color: #081828;
+  border: 1px solid #e6eef7;
+}
+
+.pdf-hero-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid #e6eef7;
+  box-shadow: 0 24px 60px rgba(15, 42, 74, 0.12);
+}
+
+.pdf-hero-image {
+  margin: 16px 0;
+  background: #f8fbff;
+  border-radius: 18px;
+  border: 1px solid #e6eef7;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pdf-hero-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 991px) {
+  .pdf-hero {
     padding: 90px 0 70px;
   }
 }
